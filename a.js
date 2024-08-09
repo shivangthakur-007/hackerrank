@@ -93,10 +93,10 @@ const f = createHelloWorld();
 // f();
 
 var createCounter = function (n) {
-  i=-1
+  i = -1;
   return function () {
     i++;
-    return n+i; 
+    return n + i;
   };
 };
 // const counter = createCounter(10);
@@ -104,40 +104,50 @@ var createCounter = function (n) {
 // console.log(counter())
 // console.log(counter())
 
-let api={
-
-  "success": true,
-  "message": "all news",
-  "news": [
+let api = {
+  success: true,
+  message: "all news",
+  news: [
     {
-      "thumbnail": {
-        "public_id": "newsapsite/uxp9dltweithithgxke4",
-        "secure_url": "https://res.cloudinary.com/dvhcu6di8/image/upload/v1720379144/newsapsite/uxp9dltweithithgxke4.png"
+      thumbnail: {
+        public_id: "newsapsite/uxp9dltweithithgxke4",
+        secure_url:
+          "https://res.cloudinary.com/dvhcu6di8/image/upload/v1720379144/newsapsite/uxp9dltweithithgxke4.png",
       },
-      "numberofTitle": 0,
-      "_id": "668ae70508fc5733dc5f3196",
-      "title": "computers",
-      "description": "basic needs of human now-a-days",
-      "category": "technolgoy",
-      "numberofthumbnail": 0,
-      "createdby": "Adarsh",
-      "createdAt": "2024-07-07T19:05:41.710Z",
-      "updatedAt": "2024-07-07T19:05:45.075Z",
-      "__v": 0
-    }]}
+      numberofTitle: 0,
+      _id: "668ae70508fc5733dc5f3196",
+      title: "computers",
+      description: "basic needs of human now-a-days",
+      category: "technolgoy",
+      numberofthumbnail: 0,
+      createdby: "Adarsh",
+      createdAt: "2024-07-07T19:05:41.710Z",
+      updatedAt: "2024-07-07T19:05:45.075Z",
+      __v: 0,
+    },
+  ],
+};
 
-    // console.log(api["news"]?category)
+// console.log(api["news"]?category)
 
-    function reverseString(s) {
-      try {
-        let s1 = s.split("").reverse().join("");
-        console.log(s1);
-      } catch (e) {
-        console.log(e.message);
-        console.log(s);
-      }
-    }
+function reverseString(s) {
+  try {
+    let s1 = s.split("").reverse().join("");
+    console.log(s1);
+  } catch (e) {
+    console.log(e.message);
+    console.log(s);
+  }
+}
 
-    // reverseString(1234)
+// reverseString(1234)
 
-    
+function isPositive(a) {
+  let result = "YES";
+  if (a < 0) {
+    throw { message: "Negative Error" };
+  } else if (a === 0) {
+    throw { message: "Zero Error" };
+  }
+  return result;
+}
