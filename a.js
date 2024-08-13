@@ -156,20 +156,30 @@ class Rectangle {
   constructor(a, b) {
     (this.a = a), (this.b = b);
   }
-  area(){
-    if(this.a !== this.b){
-      console.log(this.a*this.b, 'Rectangle')
-    }
-    else if (this.a=== this.b) {
-      console.log(this.a*this.b, 'Square')
+  area() {
+    if (this.a !== this.b) {
+      console.log(this.a * this.b, "Rectangle");
+    } else if (this.a === this.b) {
+      console.log(this.a * this.b, "Square");
     }
   }
 }
-class Square extends Rectangle{
-  constructor(s){
-    super(s,s)
+class Square extends Rectangle {
+  constructor(s) {
+    super(s, s);
   }
 }
-let r=new Square(4,5);
+let r = new Square(4, 5);
 
-r.area()
+// r.area()
+
+let a = document.getElementById("btn");
+
+const Increbtn = () => {
+  const count = Number(a.innerHTML) + 1;
+  a.innerHTML = count;
+  
+};
+a.addEventListener("click", Increbtn);
+
+console.log("object", Increbtn());
