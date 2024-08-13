@@ -151,3 +151,25 @@ function isPositive(a) {
   }
   return result;
 }
+
+class Rectangle {
+  constructor(a, b) {
+    (this.a = a), (this.b = b);
+  }
+  area(){
+    if(this.a !== this.b){
+      console.log(this.a*this.b, 'Rectangle')
+    }
+    else if (this.a=== this.b) {
+      console.log(this.a*this.b, 'Square')
+    }
+  }
+}
+class Square extends Rectangle{
+  constructor(s){
+    super(s,s)
+  }
+}
+let r=new Square(4,5);
+
+r.area()
