@@ -82,7 +82,22 @@ const func = (s) => {
   console.log(a.trim());
 };
 
+function vowelandconsonant(s) {
+  let vowel = "aeiou";
+  let a = " ";
+  for (let index = 0; index < s.length; index++) {
+    if (vowel.includes(s[index])) {
+      console.log(s[index])
+    }
+    else{
+      a += s[index]+ '\n';
+    }
+  }
+  console.log(a.trim())
+}
+// vowelandconsonant('javascriptloops')
 // func("javascriptloops")
+
 var createHelloWorld = function () {
   return function (...args) {
     [...args] = ["Hello World"];
@@ -169,17 +184,113 @@ class Square extends Rectangle {
     super(s, s);
   }
 }
-let r = new Square(4, 5);
+let r1 = new Square(4, 5);
 
 // r.area()
 
-let a = document.getElementById("btn");
+// let a = document.getElementById("btn");
 
-const Increbtn = () => {
-  const count = Number(a.innerHTML) + 1;
-  a.innerHTML = count;
-  
-};
-a.addEventListener("click", Increbtn);
+// const Increbtn = () => {
+//   const count = Number(a.innerHTML) + 1;
+//   a.innerHTML = count;
 
-console.log("object", Increbtn());
+// };
+// a.addEventListener("click", Increbtn);
+
+// console.log("object", Increbtn());
+//  let PI = 0;
+let area = 0,
+  r = 2,
+  perimeter = 0;
+let pi = Math.PI;
+// Print the area of the circle:
+area = 2 * pi * Math.pow(r, 2);
+// Print the perimeter of the circle:
+perimeter = 2 * pi * r;
+// console.log(area);
+// console.log(perimeter);
+
+function getGrade(score) {
+  let grade;
+  score = 0;
+  if (25 < score && score <= 30) {
+    console.log("I am less than and equal to 30");
+  } else {
+    console.log("I am greater than score");
+  }
+}
+
+// getGrade(24);
+
+// switch (expression) {
+//   case x:
+//     // code block
+//     break;
+//   case y:
+//     // code block
+//     break;
+//   default:
+//   // code block
+// }
+
+("use strict");
+
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+
+let inputString = "";
+let currentLine = 0;
+
+process.stdin.on("data", (inputStdin) => {
+  inputString += inputStdin;
+});
+
+process.stdin.on("end", (_) => {
+  inputString = inputString
+    .trim()
+    .split("\n")
+    .map((string) => {
+      return string.trim();
+    });
+
+  main();
+});
+//if else
+function readLine() {
+  return inputString[currentLine++];
+}
+//switch
+
+function getLetter(s) {
+  let letter;
+  // Write your code here
+  switch (s[0]) {
+    case "a" || "e" || "i" || "o" || "u":
+      letter = "A";
+      break;
+    case "b" || "c" || "d" || "f" || "g":
+      letter = "B";
+      break;
+    case "h" || "j" || "k" || "l" || "m":
+      letter = "C";
+      break;
+    default:
+      "n" || "p" || "q" || "r" || "s" || "t" || "v" || "w" || "x" || "y" || "z";
+      letter = "D";
+      break;
+  }
+  return letter;
+}
+
+function getSecondLargest(nums) {
+  // Complete the function
+  for (let i = 0; i < nums.length; i++) {
+   for (let index = 0; index < nums.length; index++) {
+    if (nums[i] <= nums[index]) {
+       return nums[i];
+    }
+   } 
+  }
+}
+
+console.log(getSecondLargest([10, 30, 40, 20, 60]))
