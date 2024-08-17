@@ -87,13 +87,12 @@ function vowelandconsonant(s) {
   let a = " ";
   for (let index = 0; index < s.length; index++) {
     if (vowel.includes(s[index])) {
-      console.log(s[index])
-    }
-    else{
-      a += s[index]+ '\n';
+      console.log(s[index]);
+    } else {
+      a += s[index] + "\n";
     }
   }
-  console.log(a.trim())
+  console.log(a.trim());
 }
 // vowelandconsonant('javascriptloops')
 // func("javascriptloops")
@@ -282,15 +281,70 @@ function getLetter(s) {
   return letter;
 }
 
+// function getSecondLargest(nums) {
+//   // Complete the function
+//   let c = nums.sort((a, b) => a - b);
+//   let b = c.reverse();
+//   if (b.length = 1) {
+//     return b[0];
+//   } 
+//   // else {
+//   //   return b[1];
+//   // }
+// }
 function getSecondLargest(nums) {
   // Complete the function
-  for (let i = 0; i < nums.length; i++) {
-   for (let index = 0; index < nums.length; index++) {
-    if (nums[i] <= nums[index]) {
-       return nums[i];
+  let largest = nums[0];
+  let secondLargest = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > largest) {
+      secondLargest = largest;
+      largest = nums[i];
+      continue;
     }
-   } 
+
+    if (nums[i] > secondLargest && nums[i] < largest) {
+      secondLargest = nums[i];
+    }
+  }
+
+  return secondLargest;
+}
+// console.log(getSecondLargest([2,3,6,6,5]))
+// console.log(getSecondLargest([5]))
+// console.log(getSecondLargest([10,5,12]))
+
+function getCount(objects) {
+  for (const i in objects) {
+    if (objects.x == objects.y) {
+      let a = i;
+      return a;
+    }
   }
 }
 
-console.log(getSecondLargest([10, 30, 40, 20, 60]))
+const o = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+};
+
+// console.log("property: value");
+// 'p' is the property
+for (p in o) {
+  console.log(p);
+}
+
+function countObjects(objects){
+  let a=0;
+  for (let index = 0; index < objects.length; index++) {
+      if (objects[index].x==objects[index].y) {
+        a +=1;
+      }
+  }
+  return a;
+}
+
+// console.log(countObjects({x:1, y:1}))
