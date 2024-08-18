@@ -287,7 +287,7 @@ function getLetter(s) {
 //   let b = c.reverse();
 //   if (b.length = 1) {
 //     return b[0];
-//   } 
+//   }
 //   // else {
 //   //   return b[1];
 //   // }
@@ -333,18 +333,58 @@ const o = {
 
 // console.log("property: value");
 // 'p' is the property
-for (p in o) {
-  console.log(p);
-}
+// for (p in o) {
+//   console.log(p);
+// }
 
-function countObjects(objects){
-  let a=0;
+function countObjects(objects) {
+  let a = 0;
   for (let index = 0; index < objects.length; index++) {
-      if (objects[index].x==objects[index].y) {
-        a +=1;
-      }
+    if (objects[index].x == objects[index].y) {
+      a += 1;
+    }
   }
   return a;
 }
 
 // console.log(countObjects({x:1, y:1}))
+
+var expect = function (v) {
+  return {
+    
+    toBe(val) {
+      if (v === val) {
+        return true;
+      } else {
+        throw new Error('Not Equal')
+      }
+    },
+    notToBe(val) {
+      if (v !== val) {
+        return true;
+      } else {
+        throw new Error('Equal')
+      }
+    },
+  };
+};
+// console.log(expect(5).toBe(null));
+
+class Polygon {
+  constructor(inarr=[]) {
+    this.arr = inarr;
+  }
+  perimeter() {
+    let sum=0;
+    for (let index = 0; index < this.arr.length; index++) {
+      sum += this.arr[index]
+    }
+    return sum;
+  }
+}
+
+const rectangle = new Polygon([10, 20, 10, 20]);
+const square = new Polygon([10, 10, 10, 10]);
+const pentagon = new Polygon([10, 20, 30, 40, 43]);
+console.log(rectangle.perimeter())
+console.log(square.perimeter())
