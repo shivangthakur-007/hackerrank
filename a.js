@@ -351,19 +351,18 @@ function countObjects(objects) {
 
 var expect = function (v) {
   return {
-    
     toBe(val) {
       if (v === val) {
         return true;
       } else {
-        throw new Error('Not Equal')
+        throw new Error("Not Equal");
       }
     },
     notToBe(val) {
       if (v !== val) {
         return true;
       } else {
-        throw new Error('Equal')
+        throw new Error("Equal");
       }
     },
   };
@@ -371,13 +370,13 @@ var expect = function (v) {
 // console.log(expect(5).toBe(null));
 
 class Polygon {
-  constructor(inarr=[]) {
+  constructor(inarr = []) {
     this.arr = inarr;
   }
   perimeter() {
-    let sum=0;
+    let sum = 0;
     for (let index = 0; index < this.arr.length; index++) {
-      sum += this.arr[index]
+      sum += this.arr[index];
     }
     return sum;
   }
@@ -386,5 +385,39 @@ class Polygon {
 const rectangle = new Polygon([10, 20, 10, 20]);
 const square = new Polygon([10, 10, 10, 10]);
 const pentagon = new Polygon([10, 20, 30, 40, 43]);
-console.log(rectangle.perimeter())
-console.log(square.perimeter())
+// console.log(rectangle.perimeter())
+// console.log(square.perimeter())
+
+var createCounter = function (init) {
+  let initialInit = init;
+  return {
+    increment() {
+      return (initialInit += 1);
+    },
+    decrement() {
+      // let initialInit=0;
+      // initialInit=init;
+      return (initialInit -= 1);
+    },
+    reset() {
+      // let initialInit = 0;
+      // initialInit = init;
+      return initialInit=init;
+    },
+  };
+};
+
+const counter = createCounter(0);
+// console.log(counter.increment());
+// console.log(counter.increment());
+// console.log(counter.decrement());
+// console.log(counter.reset());
+// console.log(counter.reset());
+
+function sides(literals, ...expressions) {
+  const [a, p] = expressions;
+  const value = Math.sqrt(p ** 2 - 16 * a);
+
+  return [(p - value) / 4, (p + value) / 4];
+}
+
