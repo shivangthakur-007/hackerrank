@@ -402,7 +402,7 @@ var createCounter = function (init) {
     reset() {
       // let initialInit = 0;
       // initialInit = init;
-      return initialInit=init;
+      return (initialInit = init);
     },
   };
 };
@@ -421,3 +421,16 @@ function sides(literals, ...expressions) {
   return [(p - value) / 4, (p + value) / 4];
 }
 
+function evenodd(a) {
+  let eveodd = a.map(function (a) {
+    if (a % 2 === 0) {
+      return a * 2;
+    } else {
+      return a * 3;
+    }
+  });
+  return eveodd
+}
+
+let a = [1, 2, 3, 4, 5];
+console.log(evenodd(a));
