@@ -190,7 +190,7 @@ let r1 = new Square(4, 5);
 // let a = document.getElementById("btn");
 
 // const Increbtn = () => {
-//   const count = Number(a.innerHTML) + 1;
+//   const count = Number(a.textContent) + 1;
 //   a.innerHTML = count;
 
 // };
@@ -434,3 +434,43 @@ function evenodd(a) {
 
 let a = [1, 2, 3, 4, 5];
 console.log(evenodd(a));
+
+function regexVar() {
+  /*
+   * Declare a RegExp object variable named 're'
+   * It must match a string that starts with 'Mr.', 'Mrs.', 'Ms.', 'Dr.', or 'Er.', /^(Mr\.|Dr\.|Er\.|Ms\.|Mrs\.)\s?[a-z|A-Z]+$/)
+   * followed by one or more letters.
+   */
+  let re = /^(Mr|Mrs|Ms|Dr|Er)\.\s?[a-z|A-Z]+$/;
+  /*
+   * Do not remove the return statement
+   */
+  return re;
+}
+
+function regexVar() {
+  /*
+   * Declare a RegExp object variable named 're'
+   * It must match ALL occurrences of numbers in a string.
+   */
+  let re = /[0-9]+/gm;
+
+  /*
+   * Do not remove the return statement
+   */
+  return re;
+}
+
+function getMaxLessThanK(n, k) {
+  let max = 0;
+
+  for (let a = 1; a <= n; a++) {
+    for (let b = a + 1; b <= n; b++) {
+      let bw = a & b;
+
+      bw < k && bw > max && (max = bw);
+    }
+  }
+
+  return max;
+}
