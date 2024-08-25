@@ -89,7 +89,7 @@ function BubbleSort(arr) {
     }
   } while (swapped);
 }
-let arr = [1, -6, 2, -10];
+let arr = [8, 20, -2, 4, -6];
 BubbleSort(arr);
 // console.log(arr);
 
@@ -100,11 +100,78 @@ function InsertionSort(arr) {
     let numberToinsert = arr[i];
     let j = i - 1;
     while (j >= 0 && arr[j] > numberToinsert) {
-      arr[j+1]= arr[j]
-      j= j-1
+      arr[j + 1] = arr[j];
+      j = j - 1;
     }
-    arr[j+1] = numberToinsert
+    arr[j + 1] = numberToinsert;
   }
 }
-InsertionSort(arr)
-console.log(arr)
+InsertionSort(arr);
+// console.log(arr)
+
+function QuickSort(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+  let pivot = arr[arr.length - 1];
+  let left = [],
+    right = [];
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return [...QuickSort(left), pivot, ...QuickSort(right)];
+}
+// console.log(QuickSort(arr));
+
+function MergeSort(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+  let mid = Math.floor(arr.length / 2);
+  let leftArr = arr.slice(0, mid);
+  let rightArr = arr.slice(mid);
+  // console.log(rightArr, leftArr)
+  return merge(MergeSort(leftArr), MergeSort(rightArr));
+}
+function merge(leftArr, rightArr) {
+  let sortArr = [];
+  while (leftArr.length && rightArr.length) {
+    if (leftArr[0] <= rightArr[0]) {
+      sortArr.push(leftArr.shift());
+    } else {
+      sortArr.push(rightArr.shift());
+    }
+  }
+  return [...sortArr, ...leftArr, ...rightArr];
+}
+// let arr1 = [9, 21, -3, 5, -7];
+// console.log(MergeSort(arr1))
+// MergeSort(arr1)
+
+function Cartiesan(arr1, arr2) {
+  let result = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      result.push([arr1[i], arr2[j]]);
+    }
+  }
+  return result;
+}
+
+let arr1 = [1, 2];
+let arr2 = [3, 4, 5];
+// console.log(Cartiesan(arr1, arr2))
+
+function ClimbingStairCase(n) {
+  let noOfways = [1, 2];
+  for (let i = 2; i <= n; i++) {
+    noOfways[i] = noOfways[i - 1] + noOfways[i - 2];
+  }
+  return noOfways[n - 1];
+}
+
+console.log(ClimbingStairCase(5));
