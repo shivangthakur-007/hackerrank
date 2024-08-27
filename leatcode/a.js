@@ -174,4 +174,29 @@ function ClimbingStairCase(n) {
   return noOfways[n - 1];
 }
 
-console.log(ClimbingStairCase(5));
+// console.log(ClimbingStairCase(5));
+
+function TowerofHanoi(n, fromRod, toRod, usingRod) {
+  if (n === 1) {
+    console.log(`Move disk 1 from ${fromRod} to ${toRod}`);
+    return;
+  }
+  TowerofHanoi(n-1, fromRod, usingRod, toRod)
+  console.log(`Move disk ${n} from ${fromRod} to ${toRod}`);
+  TowerofHanoi(n-1, usingRod, toRod, fromRod)
+}
+
+TowerofHanoi(5, 'A', 'C', 'B')
+
+
+//using fuction reduce array without using Array.reduce
+var reduce = function (nums, fn, init) {
+  let val = init;
+  if (nums.length < 1) {
+    return init;
+  }
+  for (let i = 0; i < nums.length; i++) {
+    val = fn(val, nums[i]);
+  }
+  return val;
+};
