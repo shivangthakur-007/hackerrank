@@ -181,13 +181,12 @@ function TowerofHanoi(n, fromRod, toRod, usingRod) {
     console.log(`Move disk 1 from ${fromRod} to ${toRod}`);
     return;
   }
-  TowerofHanoi(n-1, fromRod, usingRod, toRod)
+  TowerofHanoi(n - 1, fromRod, usingRod, toRod);
   console.log(`Move disk ${n} from ${fromRod} to ${toRod}`);
-  TowerofHanoi(n-1, usingRod, toRod, fromRod)
+  TowerofHanoi(n - 1, usingRod, toRod, fromRod);
 }
 
-TowerofHanoi(5, 'A', 'C', 'B')
-
+// TowerofHanoi(5, 'A', 'C', 'B')
 
 //using fuction reduce array without using Array.reduce
 var reduce = function (nums, fn, init) {
@@ -200,3 +199,28 @@ var reduce = function (nums, fn, init) {
   }
   return val;
 };
+
+let obj = {
+  0: [1, 2, 3],
+  1: [4, 5, 6],
+  2: [7, 8, 9],
+};
+console.log(Object.keys(obj));
+
+// matrix diagonal question
+
+function diagonalDifference(arr) {
+  // Write your code here
+  let n = 3;
+  let d1 = 0,
+    d2 = 0;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (i === j) {
+        d1 += arr[i][j];
+      }
+      if (i == n - j - 1) d2 += arr[i][j];
+    }
+  }
+  return Math.abs(d1 - d2);
+}
