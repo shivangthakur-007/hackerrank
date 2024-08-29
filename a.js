@@ -429,7 +429,7 @@ function evenodd(a) {
       return a * 3;
     }
   });
-  return eveodd
+  return eveodd;
 }
 
 let a = [1, 2, 3, 4, 5];
@@ -473,4 +473,28 @@ function getMaxLessThanK(n, k) {
   }
 
   return max;
+}
+
+// hackerrank questions
+
+function plusMinus(arr) {
+  // Write your code here
+  let positivecount = 0;
+  let negativecount = 0;
+  let zerocount = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < 0) {
+      negativecount++;
+    } else if (arr[i] > 0) {
+      positivecount++;
+    } else {
+      zerocount++;
+    }
+  }
+  positivecount = (positivecount /= arr.length).toFixed(6);
+  negativecount = (negativecount /= arr.length).toFixed(6);
+  zerocount = (zerocount /= arr.length).toFixed(6);
+  // console.log(positivecount);
+  // console.log(negativecount);
+  // console.log(zerocount);
 }
