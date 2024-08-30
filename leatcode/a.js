@@ -205,7 +205,7 @@ let obj = {
   1: [4, 5, 6],
   2: [7, 8, 9],
 };
-console.log(Object.keys(obj));
+// console.log(Object.keys(obj));
 
 // matrix diagonal question
 
@@ -243,5 +243,64 @@ let compose = function (functions) {
   }
 };
 
+// Implicit Binding
+// const person={
+//   name: 'Adarsh',
+//   sayMyname(){
+//     console.log(`My Name is ${this.name}`)
+//   }
+// }
 
+//explicit binding
+// const person={
+//   name: 'Adarsh',
+// }
+// function sayMyname(){
+//   console.log(`My Name is ${this.name}`)
+// }
 
+// sayMyname.call(person)
+// say=sayMyname.bind(person)
+// say()
+// sayMyname.apply(person)
+
+//New Binding
+
+// function person(name){
+//   this.name= name
+// }
+// let p1= new person('Adarsh')
+// console.log(p1)
+
+//default binding
+
+// globalThis.name= 'Adarsh'
+// function saymyname(){
+//   console.log(`My name is ${this.name}`)
+// }
+// saymyname()
+
+const person={
+  firstName: 'Vishwas',
+  lastName: 'Batman',
+  saymyname(){
+    const fullName= ()=>{
+      return `${this.firstName} ${this.lastName}`
+    }
+    // console.log(`Full Name is ${fullName()}`)
+  }
+}
+
+person.saymyname()
+
+// return length argument passed
+
+var argumentsLength = function (...args) {
+  let count = 0;
+  for (let i = 0; i < args.length; i++) {
+    count += 1;
+  }
+  return count;
+};
+
+ 
