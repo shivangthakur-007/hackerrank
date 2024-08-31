@@ -1,9 +1,9 @@
-.animation{
-    height: 100px;
-    width: 100px;
-    border: 2px solid black;
+.btncontainer {
+  width: 75%;
 }
 
-.animation:hover{
-    background-color: blue;
+.btncontainer > .btn {
+  width: 30%;
+  height: 48px;
+  font-size: 24px;
 }
