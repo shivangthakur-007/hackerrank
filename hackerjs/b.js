@@ -30,7 +30,8 @@ let a = ((5000 / 5) * 9 - 200 * 6 + 15 * 15) / 3 + 75 * 8;
 
 // console.log(a);
 
-var letterpermutation = function (S) {
+function letterpermutation(S) {
+  // var letterpermutation = function (S) {
   const result = [];
   const dfs = (i, S, slate) => {
     // base case
@@ -59,6 +60,30 @@ var letterpermutation = function (S) {
   };
   dfs(0, S, []);
   return result;
-};
+}
 
-console.log(letterpermutation("a1b2"));
+// console.log(letterpermutation("a1b2"));
+
+// leatcode 78,
+function Subset(nums) {
+  let result=[];
+  const dfs = (i, nums, slate) => {
+    // base case
+    if (i === nums.length) {
+      result.push(slate.slice());
+      return;
+    }
+    // recursive code
+    // exclude
+    dfs(i + 1, nums, slate);
+
+    //include
+    slate.push(nums[i]);
+    dfs(i + 1, nums, slate);
+    slate.pop();
+  };
+  dfs(0, nums, []);
+  console.log(result);
+}
+
+Subset([1,2,3])
