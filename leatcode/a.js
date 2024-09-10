@@ -280,18 +280,18 @@ let compose = function (functions) {
 // }
 // saymyname()
 
-const person={
-  firstName: 'Vishwas',
-  lastName: 'Batman',
-  saymyname(){
-    const fullName= ()=>{
-      return `${this.firstName} ${this.lastName}`
-    }
+const person = {
+  firstName: "Vishwas",
+  lastName: "Batman",
+  saymyname() {
+    const fullName = () => {
+      return `${this.firstName} ${this.lastName}`;
+    };
     // console.log(`Full Name is ${fullName()}`)
-  }
-}
+  },
+};
 
-person.saymyname()
+person.saymyname();
 
 // return length argument passed
 
@@ -314,6 +314,59 @@ var once = function (fn) {
     return undefined;
   };
 };
+// leatcode 78 subset
+function Subset(nums) {
+  let result = [];
+  const dfs = (i, nums, slate) => {
+    // base case
+    if (i === nums.length) {
+      result.push(slate.slice());
+      return;
+    }
+    // recursive code
+    // exclude
+    dfs(i + 1, nums, slate);
 
+    //include
+    slate.push(nums[i]);
+    dfs(i + 1, nums, slate);
+    slate.pop();
+  };
+  dfs(0, nums, []);
+  // console.log(result);
+}
 
- 
+Subset([1, 2, 3]);
+
+// subset duplicate
+
+function DuplicateSubset(nums) {
+  // global scope
+  const result = [];
+
+  const dfs = (i, nums, slate) => {
+    if (i === nums.length) {
+      result.push(slate.slice());
+      return;
+    }
+    //exclude
+    dfs(i + 1, nums, slate);
+
+    // include
+    slate.push(nums[i]);
+    dfs(i + 1, nums, slate);
+    slate.pop();
+  };
+  dfs(0, nums, []);
+
+  const hash={};
+  for (const el of result) {
+    if(hash[el]){
+      continue;
+    }
+      hash[el]=el
+  }
+  console.log(Object.values(hash))
+}
+
+DuplicateSubset([1,2,2])

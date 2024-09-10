@@ -522,3 +522,4 @@ function myfunction() {
   document.getElementById("btn7").innerHTML = val8;
   document.getElementById("btn4").innerHTML = val7;
 }
+

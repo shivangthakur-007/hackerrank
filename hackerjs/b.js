@@ -64,26 +64,3 @@ function letterpermutation(S) {
 
 // console.log(letterpermutation("a1b2"));
 
-// leatcode 78,
-function Subset(nums) {
-  let result=[];
-  const dfs = (i, nums, slate) => {
-    // base case
-    if (i === nums.length) {
-      result.push(slate.slice());
-      return;
-    }
-    // recursive code
-    // exclude
-    dfs(i + 1, nums, slate);
-
-    //include
-    slate.push(nums[i]);
-    dfs(i + 1, nums, slate);
-    slate.pop();
-  };
-  dfs(0, nums, []);
-  console.log(result);
-}
-
-Subset([1,2,3])
