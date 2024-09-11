@@ -200,11 +200,11 @@ var reduce = function (nums, fn, init) {
   return val;
 };
 
-let obj = {
-  0: [1, 2, 3],
-  1: [4, 5, 6],
-  2: [7, 8, 9],
-};
+// let obj = {
+//   0: [1, 2, 3],
+//   1: [4, 5, 6],
+//   2: [7, 8, 9],
+// };
 // console.log(Object.keys(obj));
 
 // matrix diagonal question
@@ -359,34 +359,61 @@ function DuplicateSubset(nums) {
   };
   dfs(0, nums, []);
 
-  const hash={};
+  const hash = {};
   for (const el of result) {
-    if(hash[el]){
+    if (hash[el]) {
       continue;
     }
-    hash[el]=el
+    hash[el] = el;
   }
   // console.log(Object.values(hash))
 }
 
-DuplicateSubset([1,2,2])
+DuplicateSubset([1, 2, 2]);
 
 // permutation leatcode subset 46
-function permutation(nums){
-  const result=[];
-  const dfs=(i, nums)=>{
-    if(i===nums.length){
-      result.push(nums.slice())
-      return
+function permutation(nums) {
+  const result = [];
+  const dfs = (i, nums) => {
+    if (i === nums.length) {
+      result.push(nums.slice());
+      return;
     }
     // dfs recursive
     for (let j = i; j < nums.length; j++) {
-      [nums[i], nums[j]]= [nums[j], nums[i]]
-      dfs(i+1, nums);
-      [nums[i], nums[j]]= [nums[j], nums[i]]
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      dfs(i + 1, nums);
+      [nums[i], nums[j]] = [nums[j], nums[i]];
     }
-  }
-  dfs(0, nums)
-  console.log(result)
+  };
+  dfs(0, nums);
+  // console.log(result)
 }
-permutation([1,2,3])
+permutation([1, 2, 3]);
+
+function Permutationduplicate(nums) {
+  // global result
+  const result = [];
+
+  const dfs = (i, nums) => {
+    if (i === nums.length) {
+      result.push(nums.slice());
+      return;
+    }
+    // dfs recursive helper
+    const hash = {};
+    for (let j = i; j < nums.length; j++) {
+      if (hash[nums[j]]) {
+        continue;
+      }
+      hash[nums[j]] = true;
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      dfs(i + 1, nums);
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+    }
+  };
+  dfs(0, nums);
+  console.log(result);
+}
+
+Permutationduplicate([1, 1, 2]);
