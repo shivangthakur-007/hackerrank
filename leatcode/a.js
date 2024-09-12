@@ -413,7 +413,42 @@ function Permutationduplicate(nums) {
     }
   };
   dfs(0, nums);
-  console.log(result);
+  // console.log(result);
 }
 
 Permutationduplicate([1, 1, 2]);
+
+// leatcode 211 combinations
+function Combinations(k, n) {
+  const result = [];
+  const nums = [];
+
+  for (let i = 1; i <= 9; i++) {
+    nums.push(i);
+  }
+  // dfs
+  const dfs = (i, nums, k, n, slate) => {
+    //backtracking case
+    // i=0;
+    if (n < 0) return;
+
+    //base case
+    if (slate.length === k) {
+      if (n === 0) {
+        result.push(slate.slice());
+      }
+    }
+    // dfs recursive case
+    let j=i;
+    while(j<=nums.length){
+      slate.push(nums[j]);
+      dfs(j + 1, nums, k, n - nums[j], slate);
+      slate.pop();
+      j++
+    }
+  };
+  dfs(0, nums, k, n, []);
+  console.log(result);
+}
+
+Combinations(3, 7);
