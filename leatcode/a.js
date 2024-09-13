@@ -439,16 +439,51 @@ function Combinations(k, n) {
       }
     }
     // dfs recursive case
-    let j=i;
-    while(j<=nums.length){
+    let j = i;
+    while (j <= nums.length) {
       slate.push(nums[j]);
       dfs(j + 1, nums, k, n - nums[j], slate);
       slate.pop();
-      j++
+      // console.log(slate.pop())
+      j++;
     }
   };
   dfs(0, nums, k, n, []);
-  console.log(result);
+  // console.log(result);
 }
 
 Combinations(3, 7);
+
+// leatcode 40 combinations sum II
+
+function Combinations_II(candidates, target) {
+  // global result
+  const result = [];
+
+  //sort
+  candidates.sort((a, b) => a - b);
+
+  //dfs recursive helper
+  const dfs = (i, candidates, target, slate) => {
+    // backtracking case
+    if (target < 0) return;
+
+    //base case
+    if (target === 0) {
+      result.push(slate.slice());
+      return;
+    }
+
+    // dfs recurive case
+    for (let j = i; j < candidates.length; j++) {
+      if (i !== j && candidates[j] === candidates[j - 1]) continue;
+      slate.push(candidates[j]);
+      dfs(j + 1, candidates, target - candidates[j], slate);
+      slate.pop();
+    }
+  };
+  dfs(0, candidates, target, []);
+  console.log(result);
+}
+
+Combinations_II([10,1,2,7,6,1,5], 8);
