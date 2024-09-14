@@ -111,3 +111,8 @@ Example: /^abc$/m matches abc at the start of a line in multi-line input.
 /s: Dotall mode; . matches newline characters as well.
 
 Example: /abc.\*def/s matches across multiple lines.
+
+What is Hoisting in JavaScript?
+Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their scope (global or function) during the compile phase, before the code is executed. However, only the declarations are hoisted, not the initializations.
+
+This means you can use variables and functions before they are actually declared in the code, as JavaScript "hoists" them to the top of their scope.
