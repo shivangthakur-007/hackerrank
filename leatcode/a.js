@@ -483,7 +483,72 @@ function Combinations_II(candidates, target) {
     }
   };
   dfs(0, candidates, target, []);
-  console.log(result);
+  // console.log(result);
 }
 
-Combinations_II([10,1,2,7,6,1,5], 8);
+Combinations_II([10, 1, 2, 7, 6, 1, 5], 8);
+
+function Combinations_I(candidates, target) {
+  // global result
+  const result = [];
+  candidates.sort((a, b) => a - b);
+  // dfs recursive helper
+  const dfs = (i, candidates, target, slate) => {
+    if (target < 0) return;
+
+    // base case
+    if (target === 0) {
+      result.push(slate.slice());
+      return;
+    }
+
+    // dfs recusrive case
+    for (let j = i; j < candidates.length; j++) {
+      slate.push(candidates[j]);
+      dfs(j, candidates, target - candidates[j], slate);
+      slate.pop();
+    }
+  };
+  dfs(0, candidates, target, []);
+  // console.log(result)
+}
+Combinations_I([2, 3, 6, 7], 7);
+Combinations_I([2, 3, 5], 8);
+
+// leatcode 131 palindrome
+
+function isPalindrome(s, start, end) {
+  while (start < end) {
+    if (s[start] !== s[end]) return false;
+    start++;
+    end--;
+  }
+  return true
+}
+
+function Palindrome(s){
+  // global result
+  const result=[];
+
+  // dfs recursive helper
+  const dfs=(i, s, slate)=>{
+    // base case
+    if(i=== s.length){
+      result.push(slate.slice())
+      return
+    }
+
+    // dfs recursive case
+    for(let j=i; j<s.length; j++){
+      if(isPalindrome(s, i, j)){
+        slate.push(s.slice(i, j+1))
+        dfs(j+1, s, slate);
+        slate.pop();
+      }
+    }
+  }
+  dfs(0, s, [])
+  console.log(result)
+}
+
+Palindrome("aab")
