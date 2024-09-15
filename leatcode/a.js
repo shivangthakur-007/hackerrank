@@ -523,32 +523,83 @@ function isPalindrome(s, start, end) {
     start++;
     end--;
   }
-  return true
+  return true;
 }
 
-function Palindrome(s){
+function Palindrome(s) {
   // global result
-  const result=[];
+  const result = [];
 
   // dfs recursive helper
-  const dfs=(i, s, slate)=>{
+  const dfs = (i, s, slate) => {
     // base case
-    if(i=== s.length){
-      result.push(slate.slice())
-      return
+    if (i === s.length) {
+      result.push(slate.slice());
+      return;
     }
 
     // dfs recursive case
-    for(let j=i; j<s.length; j++){
-      if(isPalindrome(s, i, j)){
-        slate.push(s.slice(i, j+1))
-        dfs(j+1, s, slate);
+    for (let j = i; j < s.length; j++) {
+      if (isPalindrome(s, i, j)) {
+        slate.push(s.slice(i, j + 1));
+        dfs(j + 1, s, slate);
         slate.pop();
       }
     }
-  }
-  dfs(0, s, [])
-  console.log(result)
+  };
+  dfs(0, s, []);
+  // console.log(result)
 }
 
-Palindrome("aab")
+Palindrome("aab");
+
+function isvalid(str) {
+  const stack = [];
+  let i = 0;
+  let len = str.length;
+  while (i < len) {
+    let curstr = str[i];
+    stack.push(curstr);
+
+    const open = stack[stack.length - 2];
+    const close = stack[stack.length - 1];
+
+    if (open + close === "()") {
+      stack.pop();
+      stack.pop();
+    }  
+    i++;
+  }
+  return stack.length === 0;
+}
+function Parenthesis_1(n) {
+  // global result
+  const result = [];
+
+  // dfs recursive helper
+  const dfs = (i, n, slate) => {
+    // base case
+    if (i === n * 2) {
+      if (isvalid(slate.join(""))) {
+        result.push(slate.join(""));
+      }
+      return;
+    }
+    // dfs recursive case
+
+    //add open paren
+    slate.push("(");
+    dfs(i + 1, n, slate);
+    slate.pop();
+
+    //add close paren
+    slate.push(")");
+    dfs(i + 1, n, slate);
+    slate.pop();
+  };
+  dfs(0, n, []);
+  console.log(result);
+}
+Parenthesis_1(3);
+
+
