@@ -567,7 +567,7 @@ function isvalid(str) {
     if (open + close === "()") {
       stack.pop();
       stack.pop();
-    }  
+    }
     i++;
   }
   return stack.length === 0;
@@ -598,8 +598,81 @@ function Parenthesis_1(n) {
     slate.pop();
   };
   dfs(0, n, []);
-  console.log(result);
+  // console.log(result);
 }
 Parenthesis_1(3);
 
+function FindtargetSum(nums, target) {
+  // global result
+  let result = 0;
 
+  // dfs recursive case
+  const dfs = (i, nums, target, slate) => {
+    // base case
+    if (i === nums.length) {
+      if (slate === target) {
+        result++;
+      }
+      return;
+    }
+    // dfs recrusive helper
+    slate += nums[i];
+    dfs(i + 1, nums, target, slate);
+    slate -= nums[i];
+
+    slate -= nums[i];
+    dfs(i + 1, nums, target, slate);
+    slate += nums[i];
+  };
+  dfs(0, nums, target, 0);
+  // console.log(result);
+}
+FindtargetSum([1, 1, 1, 1, 1], 3);
+
+function lettercombinations(digits) {
+  //global result
+  const result = [];
+
+  let alpha = {
+    2: "abc",
+    3: "def",
+    4: "ghi",
+    5: "jkl",
+    6: "mno",
+    7: "pqrs",
+    8: "tuv",
+    9: "wxyz",
+  };
+  const dfs = (i, digits, slate) => {
+    // base case
+    if (i === digits.length) {
+      result.push(slate.join(""));
+      return;
+    }
+
+    // dfs recursive case
+    let chars = alpha[digits[i]];
+
+    for (let char of chars) {
+      slate.push(char);
+      dfs(i + 1, digits, slate);
+      slate.pop();
+    }
+    // console.log(slate)
+  };
+  dfs(0, digits, []);
+  // console.log(result);
+}
+lettercombinations("23");
+
+function fibonacciNumber(nums) {
+  if (nums === 0) {
+    return 0;
+  } else if (nums === 1) {
+    return 1;
+  } else {
+    return fibonacciNumber(nums - 1) + fibonacciNumber(nums - 2);
+  }
+}
+
+console.log(fibonacciNumber(4));
