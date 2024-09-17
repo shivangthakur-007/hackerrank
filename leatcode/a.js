@@ -675,4 +675,55 @@ function fibonacciNumber(nums) {
   }
 }
 
-console.log(fibonacciNumber(4));
+// console.log(fibonacciNumber(4));
+
+// n - queens
+
+const formatBoard = (board) => {
+  // console.log(board)
+  const result = [];
+
+  for (let col = 0; col < board.length; col++) {
+    let newRow = new Array(board.length).fill(".");
+    newRow[board[col]] = "Q";
+    result.push(newRow.join(''))
+  }
+  console.dir(result)
+};
+
+function solveQueens(n) {
+  // global result
+  const result = [];
+
+  const dfs = (i, n, slate) => {
+    let lastQ = i - 1;
+
+    for (let prevQ = 0; prevQ < lastQ; prevQ++) {
+      // col conflict
+      if ((slate[prevQ] === slate[lastQ])) return;
+
+      // diagonal conflict
+      let rowDiff = Math.abs(prevQ - lastQ);
+      let coldiff = Math.abs(slate[prevQ] - slate[lastQ]);
+
+      if (rowDiff === coldiff) return;
+    }
+    // base cas
+    if (i === n) {
+      result.push(slate.slice());
+      return;
+    }
+
+    // dfs recursive case
+    for (let col = 0; col < n; col++) {
+      slate.push(col);
+      dfs(i + 1, n, slate);
+      slate.pop();
+    }
+  };
+  dfs(0, n, []);
+  // console.log(result)
+  return result.map((board) => formatBoard(board));
+}
+
+solveQueens(4);
